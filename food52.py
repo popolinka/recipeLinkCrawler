@@ -15,7 +15,7 @@ def getlinks(pageNum):
     # recipeTags = soup.find_all("a", {"class": "js-quick-basket-title"})  # <class 'bs4.element.ResultSet'>
     # recipeTags = soup.find_all("a").get('href')
     for link in soup.find_all("a", {"class": "js-quick-basket-title"}):
-        food52_links.append("https://food52.com/" + link.get('href'))
+        food52_links.append("https://food52.com" + link.get('href'))
     return food52_links
 
 

@@ -1,2 +1,1 @@
-# recipeLinkCrawler
-crawls links of recipes, not the recipes themselves, from some websites.
+To be able to run Bon Appetit's crawler, ChromeDriver needs be installed in your PATH

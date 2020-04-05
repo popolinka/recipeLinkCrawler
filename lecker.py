@@ -9,17 +9,16 @@ def getlinks(pageNum):
     url = baseLink.format(pageNum)
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
-    for link in soup.find_all("a", {"class": "teaser teaser--full-2col box w-6"}):
-        lecker_Links.append(link.get('href'))
+    parent = soup.find_all("div", {"class": "teaser teaser--full-2col box w-6"})
+    for divs in parent:
+        for link in divs.find_all("a"):
+            lecker_Links.append("https://www.lecker.de" + link.get('href'))
 
-    # return allRecipes_links
 
-
-for i in range(1, 10):  # max page = 5
-    getlinks(i * 3)  # chefkoch increases 30 60 90 ...
+for i in range(1, 10):
+    getlinks(i)
     time.sleep(2)
 
-print(lecker_Links)
 
 with open('lecker_Links.txt', 'w+') as f:
     for recipes in lecker_Links:
